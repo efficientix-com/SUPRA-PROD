@@ -1,6 +1,6 @@
 <advancedpdftemplate scriptid="custtmpl_119_5227067_sb1_969" standard="STDTMPLSALESORDST">
   <description></description>
-  <displaysourcecode>F</displaysourcecode>
+  <displaysourcecode>T</displaysourcecode>
   <isinactive>F</isinactive>
   <preferred>F</preferred>
   <printtype>TRANSACTION</printtype>
