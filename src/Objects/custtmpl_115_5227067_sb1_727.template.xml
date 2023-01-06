@@ -574,7 +574,7 @@
                     <#assign "units_items" = []>
                     <#list record.item as item>
                         <#assign "tipo_articulo" = item.itemtype>
-                        <#if tipo_articulo != "Descuento">
+                        <#if tipo_articulo != "Discount">
                         <#-- Se sustituye el nombre del articulo por un id personalizado  -->
                             <#assign "name_items" = name_items + [item.custcol_tkio_ant_codigo]>
                             <#assign "units_items" = units_items + [item.units]>
