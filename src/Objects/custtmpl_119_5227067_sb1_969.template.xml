@@ -200,15 +200,15 @@
 				<td colspan="1" align="left" style="font-size: 8px;">ATENCIÓN</td>
 				<td colspan="4" align="left" style="font-size: 8px; border-bottom: 1px solid black">${user.firstname} ${user.lastname}</td>
 				<td colspan="1" align="left" style="font-size: 8px;">
-					Dirección:
+					Dirección de entrega:
 				</td>
 
-				<#if record.billaddress?has_content>
-					<#assign dir = record.billaddress?keep_after("<br />")>
+				<#if record.shipaddress?has_content>
+					<#assign dir = record.shipaddress?keep_after("<br />")>
 					<#assign calle = dir?keep_before("<br />")>
 					<#assign colonia = dir?keep_after("<br />")>
 				<#else>
-					<#assign dir = record.shipaddress?keep_after("<br />")>
+					<#assign dir = record.billaddress?keep_after("<br />")>
 					<#assign calle = dir?keep_before("<br />")>
 					<#assign colonia = dir?keep_after("<br />")>
 				</#if>
@@ -315,7 +315,7 @@
 						${item.rate}
 					</td>
 					<td  align="center" colspan="3" style="font-size: 5pt; padding-top: 4px; padding-left: 0px; padding-right: 0px;">
-						${item.amount}
+						${item.grossamt}
 					</td>
 				</tr>
 				<tr>
@@ -325,6 +325,35 @@
 				</tr>
 			</#list>
 		</table>
+
+
+		<#assign tx_json = record.custbody_efx_fe_tax_json>
+		<#if tx_json?has_content>
+			<#assign tax_json = tx_json?eval>
+		</#if>
+		<table style="width: 100%; margin-top: 30px;">
+			<tr>
+				<td colspan="17" align="right" style="font-size: 8px;">SUB TOTAL: </td>
+				<td colspan="3" align="center" style="font-size: 8px; ">${tax_json.subtotal?number?string[",##0.00"]}</td>
+			</tr>
+			<tr>
+				<td colspan="17" align="right" style="font-size: 8px;">DESCUENTO: </td>
+				<td colspan="3" align="center" style="font-size: 8px; ">${tax_json.descuentoConImpuesto?number?string[",##0.00"]}</td>
+			</tr>
+			<tr>
+				<td colspan="17" align="right" style="font-size: 8px;">RETENCION: </td>
+				<td colspan="3" align="center" style="font-size: 8px; ">${tax_json.totalRetenciones?number?string[",##0.00"]}</td>
+			</tr>
+			<tr>
+				<td colspan="17" align="right" style="font-size: 8px;">IVA: </td>
+				<td colspan="3" align="center" style="font-size: 8px; ">${tax_json.totalTraslados?number?string[",##0.00"]}</td>
+			</tr>
+			<tr>
+				<td colspan="17" align="right" style="font-size: 8px;">TOTAL: </td>
+				<td colspan="3" align="center" style="font-size: 8px; ">${tax_json.total?number?string[",##0.00"]}</td>
+			</tr>
+		</table>
+
 
 		<table style="width: 100%; margin-top: 30px;">
 			<tr>
