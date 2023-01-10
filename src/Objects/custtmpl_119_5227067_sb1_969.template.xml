@@ -214,7 +214,8 @@
 				<#else>
 					<#assign dir = record.billaddress?keep_after("<br />")>
 					<#assign calle = dir?keep_before("<br />")>
-					<#assign colonia = dir?keep_after("<br />")>
+					<#assign colonia = dir>
+					<#--  <#assign colonia = dir?keep_after("<br />")>  -->
 				</#if>
 
 				<td colspan="6" style="font-size: 8px; border-bottom: 1px solid black">
@@ -224,7 +225,7 @@
 
 			<tr>
 				<td colspan="6" align="right" style="font-size: 8px;">&nbsp;</td>
-				<td colspan="6" align="left" style="font-size: 8px; border-bottom: 1px solid black">${colonia?keep_before("<br />")}</td>
+				<td colspan="6" align="left" style="font-size: 8px; border-bottom: 1px solid black">${colonia}</td>
 			</tr>
 
 			<tr>
