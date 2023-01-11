@@ -421,7 +421,7 @@
                         <table style="width: 100%;">
                             <tr>
                                 <td style="font-size:9px;" align="left">
-                                    <b>Facturado a: </b>${dataXML.Receptor.atributos.Nombre}<br />
+                                    <b>Facturado a: </b>${record.entity?keep_before(" ")} ${dataXML.Receptor.atributos.Nombre}<br />
                                     ${record.billaddress?keep_after(" />")?upper_case}<br />
                                     <#if record.entity.phone?has_content>
                                         ${record.entity.phone}<br />
@@ -429,7 +429,7 @@
                                         ${record.entity.altphone}<br />
                                     </#if>
                                     ${record.custbody_mx_customer_rfc}<br />
-                                    <b>Enviar a: </b> ${record.shipaddress}
+                                    <b>Enviar a: </b>${record.entity?keep_before(" ")} ${record.shipaddress}
                                 </td>
                             </tr>
                         </table>
@@ -487,18 +487,18 @@
                                 <td style="font-size:9px;" align="left">
                                     <b>Facturado a:</b>
                                     <#if record.entity.custentity_mx_sat_registered_name?has_content>
-                                        ${record.entity.custentity_mx_sat_registered_name}
+                                        ${record.entity?keep_before(" ")} ${record.entity.custentity_mx_sat_registered_name}
                                     <#else>
-                                        ${record.entityname}
+                                        ${record.entity?keep_before(" ")} ${record.entityname}
                                     </#if>
                                     ${record.billaddress?keep_after(" />")?upper_case}<br />
-                                    <#if record.entity.phone>
+                                    <#if record.entity.phone?has_content>
                                         ${record.entity.phone}<br />
                                     <#else>
                                         ${record.entity.altphone}<br />
                                     </#if>
                                     ${record.custbody_mx_customer_rfc}<br />
-                                    <b>Enviar a: </b> ${record.shipaddress}
+                                    <b>Enviar a: </b>${record.entity?keep_before(" ")} ${record.shipaddress}
                                 </td>
                             </tr>
                         </table>
