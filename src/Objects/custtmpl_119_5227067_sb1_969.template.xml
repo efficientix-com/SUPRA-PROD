@@ -202,7 +202,11 @@
 
 			<tr style="margin-top: 10px">
 				<td colspan="1" align="left" style="font-size: 8px;">ATENCIÓN</td>
-				<td colspan="4" align="left" style="font-size: 8px; border-bottom: 1px solid black">${user.firstname} ${user.lastname}</td>
+				<#if record.billaddressee?has_content>
+					<td colspan="4" align="left" style="font-size: 8px; border-bottom: 1px solid black">${record.billaddressee}</td>
+				<#else>
+					<td colspan="4" align="left" style="font-size: 8px; border-bottom: 1px solid black">${record.shipaddressee}</td>
+				</#if>
 				<td colspan="1" align="left" style="font-size: 8px;">
 					Dirección de entrega:
 				</td>
