@@ -223,13 +223,22 @@
 				</#if>
 
 				<td colspan="6" style="font-size: 8px; border-bottom: 1px solid black">
-					${calle}
+					<#if record.memo?has_content>
+						${record.memo}
+					<#else>
+						${calle}
+					</#if>
 				</td>
 			</tr>
 
 			<tr>
 				<td colspan="6" align="right" style="font-size: 8px;">&nbsp;</td>
-				<td colspan="6" align="left" style="font-size: 8px; border-bottom: 1px solid black">${colonia}</td>
+				<#assign memo = record.memo?upper_case>
+				<#if memo?contains("DIRECCION DE ENTREGA PENDIENTE")>
+					<td colspan="6" align="left" style="font-size: 8px; border-bottom: 1px solid black">&nbsp;</td>
+				<#else>
+					<td colspan="6" align="left" style="font-size: 8px; border-bottom: 1px solid black">${colonia}</td>
+				</#if>
 			</tr>
 
 			<tr>
@@ -368,7 +377,13 @@
 			<tr>
 				<td>
 					Observaciones: <br />
-					${record.memo}
+					<#if record.memo?has_content>
+						${record.memo}
+					<#elseif record.shipaddress>
+						${record.shipaddress}
+					<#else>
+						${record.billaddress}
+					</#if>
 				</td>
 			</tr>
 		</table>
