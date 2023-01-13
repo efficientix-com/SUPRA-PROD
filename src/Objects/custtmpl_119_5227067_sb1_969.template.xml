@@ -379,7 +379,7 @@
 					Observaciones: <br />
 					<#if record.memo?has_content>
 						${record.memo}
-					<#elseif record.shipaddress>
+					<#elseif record.shipaddress?has_content>
 						${record.shipaddress}
 					<#else>
 						${record.billaddress}
