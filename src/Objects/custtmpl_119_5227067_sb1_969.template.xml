@@ -327,7 +327,11 @@
 						${item.expectedshipdate}
 					</td>
 					<td  align="center" colspan="7" style="font-size: 5pt; padding-top: 4px; padding-left: 0px; padding-right: 0px;">
-						${item.item}
+						<#if item.custcol_tkio_nombre_mostrar?has_content>
+							${item.custcol_tkio_nombre_mostrar}
+						<#else>
+							${item.description}
+						</#if>
 					</td>
 					<td  align="center" colspan="3" style="font-size: 5pt; padding-top: 4px; padding-left: 0px; padding-right: 0px;">
 						${item.rate}
@@ -338,7 +342,8 @@
 				</tr>
 				<tr>
 					<td colspan="20" style="font-size: 5pt; padding-top: 4px; padding-left: 0px; padding-right: 0px;">
-						${item.description}
+						${item.item}
+
 					</td>
 				</tr>
 			</#list>
